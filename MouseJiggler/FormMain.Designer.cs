@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.LabProductName = new System.Windows.Forms.Label();
             this.LabByCreator = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.RichTextBoxLog = new System.Windows.Forms.RichTextBox();
             this.PicBoxGitHub = new System.Windows.Forms.PictureBox();
             this.PicBodDonate = new System.Windows.Forms.PictureBox();
             this.PicBoxLogo = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.WiggleIntensity = new System.Windows.Forms.TrackBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RichTextBoxLogs = new System.Windows.Forms.RichTextBox();
+            this.WiggleTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBodDonate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WiggleIntensity)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabProductName
@@ -64,29 +71,10 @@
             this.LabByCreator.TabIndex = 2;
             this.LabByCreator.Text = "By SARSOFT Corp.";
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.RichTextBoxLog);
-            this.panel1.Location = new System.Drawing.Point(12, 91);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(570, 256);
-            this.panel1.TabIndex = 5;
-            // 
-            // RichTextBoxLog
-            // 
-            this.RichTextBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RichTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RichTextBoxLog.Location = new System.Drawing.Point(0, 0);
-            this.RichTextBoxLog.Name = "RichTextBoxLog";
-            this.RichTextBoxLog.ReadOnly = true;
-            this.RichTextBoxLog.Size = new System.Drawing.Size(568, 254);
-            this.RichTextBoxLog.TabIndex = 0;
-            this.RichTextBoxLog.Text = "";
-            // 
             // PicBoxGitHub
             // 
             this.PicBoxGitHub.BackColor = System.Drawing.Color.Transparent;
+            this.PicBoxGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicBoxGitHub.Image = global::MouseJiggler.Properties.Resources.github;
             this.PicBoxGitHub.Location = new System.Drawing.Point(538, 9);
             this.PicBoxGitHub.Name = "PicBoxGitHub";
@@ -94,9 +82,11 @@
             this.PicBoxGitHub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicBoxGitHub.TabIndex = 6;
             this.PicBoxGitHub.TabStop = false;
+            this.PicBoxGitHub.Click += new System.EventHandler(this.PicBoxGitHub_Click);
             // 
             // PicBodDonate
             // 
+            this.PicBodDonate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicBodDonate.Image = global::MouseJiggler.Properties.Resources.paypal_01;
             this.PicBodDonate.Location = new System.Drawing.Point(445, 9);
             this.PicBodDonate.Name = "PicBodDonate";
@@ -104,6 +94,7 @@
             this.PicBodDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicBodDonate.TabIndex = 3;
             this.PicBodDonate.TabStop = false;
+            this.PicBodDonate.Click += new System.EventHandler(this.PicBodDonate_Click);
             // 
             // PicBoxLogo
             // 
@@ -115,14 +106,69 @@
             this.PicBoxLogo.TabIndex = 0;
             this.PicBoxLogo.TabStop = false;
             // 
+            // WiggleIntensity
+            // 
+            this.WiggleIntensity.Location = new System.Drawing.Point(6, 44);
+            this.WiggleIntensity.Name = "WiggleIntensity";
+            this.WiggleIntensity.Size = new System.Drawing.Size(188, 45);
+            this.WiggleIntensity.TabIndex = 7;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.WiggleIntensity);
+            this.groupBox1.Location = new System.Drawing.Point(15, 78);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 269);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Control Box";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Intensity:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.RichTextBoxLogs);
+            this.groupBox2.Location = new System.Drawing.Point(221, 78);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(361, 269);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Application Logs";
+            // 
+            // RichTextBoxLogs
+            // 
+            this.RichTextBoxLogs.BackColor = System.Drawing.SystemColors.Control;
+            this.RichTextBoxLogs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RichTextBoxLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RichTextBoxLogs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RichTextBoxLogs.Location = new System.Drawing.Point(3, 16);
+            this.RichTextBoxLogs.Name = "RichTextBoxLogs";
+            this.RichTextBoxLogs.ReadOnly = true;
+            this.RichTextBoxLogs.Size = new System.Drawing.Size(355, 250);
+            this.RichTextBoxLogs.TabIndex = 0;
+            this.RichTextBoxLogs.Text = "";
+            // 
+            // WiggleTimer
+            // 
+            this.WiggleTimer.Tick += new System.EventHandler(this.WiggleTimer_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 359);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.PicBodDonate);
             this.Controls.Add(this.PicBoxGitHub);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.LabByCreator);
             this.Controls.Add(this.LabProductName);
             this.Controls.Add(this.PicBoxLogo);
@@ -132,10 +178,13 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MouseJiggler";
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxGitHub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBodDonate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WiggleIntensity)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,9 +196,13 @@
         private System.Windows.Forms.Label LabProductName;
         private System.Windows.Forms.Label LabByCreator;
         private System.Windows.Forms.PictureBox PicBodDonate;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox RichTextBoxLog;
         private System.Windows.Forms.PictureBox PicBoxGitHub;
+        private System.Windows.Forms.TrackBar WiggleIntensity;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox RichTextBoxLogs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer WiggleTimer;
     }
 }
 

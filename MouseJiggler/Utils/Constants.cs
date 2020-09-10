@@ -19,8 +19,10 @@
         public const int SC_MONITOR_POWER = 0xF170;
         public const int SC_SCREENSAVE = 0xF140;
 
-        // Donnation
         private const string donnation_link = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6JAKSVTCGHKCW&source=url";
         public const string PAYPAL_URL = donnation_link;
+
+        private const string github_link = "https://github.com/SARSOFT-PH";
+        public const string GITHUB_URL = github_link;
     }
 }
