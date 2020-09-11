@@ -41,6 +41,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.RichTextBoxLogs = new System.Windows.Forms.RichTextBox();
             this.WiggleTimer = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBodDonate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxLogo)).BeginInit();
@@ -160,6 +161,13 @@
             // 
             this.WiggleTimer.Tick += new System.EventHandler(this.WiggleTimer_Tick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +186,8 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MouseJiggler";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxGitHub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBodDonate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxLogo)).EndInit();
@@ -203,6 +213,7 @@
         private System.Windows.Forms.RichTextBox RichTextBoxLogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer WiggleTimer;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
