@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Product>MouseJiggler</Product>
+    <Company>SARSOFT</Company>
+    <Authors>Leonel Sarmiento</Authors>
+    <PackageProjectUrl>https://github.com/SARSOFT-PH/SARSOFT.MouseJiggler</PackageProjectUrl>
+    <PackageIcon>Icon.png</PackageIcon>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/SARSOFT-PH/SARSOFT.MouseJiggler.git</RepositoryUrl>
+    <Description>Mouse Wiggler Application</Description>
+    <Copyright>SARSOFT Copyright © 2020</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.9.11" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
+    <PackageReference Include="NLog" Version="4.7.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\Icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
