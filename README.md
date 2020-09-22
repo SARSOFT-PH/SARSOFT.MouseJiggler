@@ -10,4 +10,6 @@ This Utility Software can simulate mouse movement which prevents Windows to slee
 
 ## How To Use!
 
-To enabled and disabled the application press <kbd>Alt</kbd> + <kbd>F1</kbd>
+To enabled and disabled the application press <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>F1</kbd>
+
+![Preview](/Screenshots/screenshot.png)

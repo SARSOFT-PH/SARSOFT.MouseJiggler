@@ -1,0 +1,153 @@
+﻿<Window x:Class="MouseJiggler.Net.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseJiggler.Net"
+        mc:Ignorable="d"
+        x:Name="MainForm"
+        Title="MouseJiggler.NET" Height="250" Width="400" 
+        WindowStartupLocation="Manual" 
+        WindowStyle="None" ResizeMode="NoResize" 
+        AllowsTransparency="True">
+    <Window.Background>
+        <SolidColorBrush Color="Transparent"/>
+    </Window.Background>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="LostKeyboardFocus">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames 
+                            Storyboard.TargetName="DonationBox"
+                            Storyboard.TargetProperty="Height" Duration="0:0:0.1">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>142</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.02">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>113.6</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.04">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>85.2</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.06">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>56.8</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.08">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>28.4</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.1">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>0</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="GotKeyboardFocus">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames 
+                            Storyboard.TargetName="DonationBox"
+                            Storyboard.TargetProperty="Height" Duration="0:0:0.1">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>0</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.02">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>28.4</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.04">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>56.8</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.06">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>85.2</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.08">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>113.6</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:.1">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <GridLength>142</GridLength>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="142" x:Name="DonationBox"/>
+            <RowDefinition Height="18" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="#FF1A1A1D">
+            <Grid x:Name="WindowController">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="62"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="3" Orientation="Horizontal" >
+                    <Button x:Name="WindowTray" Click="WindowTray_Click" Width="30" Height="10" BorderThickness="0" Background="#FF404044" Cursor="Hand" Margin="0,0,2,0" ToolTip="Minimize to Tray!"></Button>
+                    <Button x:Name="WindowClose" Click="WindowClose_Click" Width="30" Height="10" BorderThickness="0" Background="Maroon" Cursor="Hand" ToolTip="Close"></Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Background="#FF212125">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="pack://application:,,,/Resources/Icon.png" Height="80" HorizontalAlignment="Center"></Image>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Text="MouseJigger.NET" Foreground="#FFBFBFBF" FontFamily="Arial" FontWeight="Bold" FontSize="30"/>
+                    <TextBlock Text="By SARSOFT" Foreground="#FF2B79C2" FontFamily="Arial" FontSize="12" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <Border Padding="5" Grid.Row="2">
+            <Border.Background>
+                <SolidColorBrush Opacity=".80" Color="#FF1A1A1D"></SolidColorBrush>
+            </Border.Background>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Image Source="pack://application:,,,/Resources/github.png" Height="80" Margin="5" ToolTip="GitHub" Cursor="Hand"></Image>
+                <Image Source="pack://application:,,,/Resources/patreon.png" Height="80" Margin="5" ToolTip="Patreon" Cursor="Hand"></Image>
+                <Image Source="pack://application:,,,/Resources/paypal.png" Height="80" Margin="5" ToolTip="Paypal" Cursor="Hand"></Image>
+                <Image Source="pack://application:,,,/Resources/ko-fi.png" Height="80" Margin="5" ToolTip="Ko-fi" Cursor="Hand"></Image>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="3" Background="#FF212125">
+            <TextBlock x:Name="LabelGuide" HorizontalAlignment="Center" VerticalAlignment="Center" Text="PRESS (CTR + SHIFT + F1) TO ACTIVATE" Foreground="#FFBFBFBF" FontFamily="Arial"></TextBlock>
+        </StackPanel>
+        <Grid/>
+    </Grid>
+</Window>

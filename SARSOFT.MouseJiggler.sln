@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseJiggler", "MouseJiggler\MouseJiggler.csproj", "{769E63A8-EFBF-4556-A286-F3BC8D14CAE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseJigglerWPF", "MouseJigglerWPF\MouseJigglerWPF.csproj", "{D4646E83-D7F2-4E18-B553-D1E841ADD69E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseJiggler.Net", "MouseJiggler.Net\MouseJiggler.Net.csproj", "{6D80520F-8DC7-4542-8BCA-2631E809D923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{769E63A8-EFBF-4556-A286-F3BC8D14CAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769E63A8-EFBF-4556-A286-F3BC8D14CAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769E63A8-EFBF-4556-A286-F3BC8D14CAE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4646E83-D7F2-4E18-B553-D1E841ADD69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4646E83-D7F2-4E18-B553-D1E841ADD69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4646E83-D7F2-4E18-B553-D1E841ADD69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4646E83-D7F2-4E18-B553-D1E841ADD69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D80520F-8DC7-4542-8BCA-2631E809D923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D80520F-8DC7-4542-8BCA-2631E809D923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D80520F-8DC7-4542-8BCA-2631E809D923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D80520F-8DC7-4542-8BCA-2631E809D923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
