@@ -4,7 +4,6 @@ This Utility Software can simulate mouse movement which prevents Windows to slee
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SARSOFT-PH_SARSOFT.MouseJiggler&metric=alert_status)](https://sonarcloud.io/dashboard?id=SARSOFT-PH_SARSOFT.MouseJiggler)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=SARSOFT-PH_SARSOFT.MouseJiggler&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=SARSOFT-PH_SARSOFT.MouseJiggler)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SARSOFT-PH_SARSOFT.MouseJiggler&metric=coverage)](https://sonarcloud.io/dashboard?id=SARSOFT-PH_SARSOFT.MouseJiggler)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=SARSOFT-PH_SARSOFT.MouseJiggler&metric=bugs)](https://sonarcloud.io/dashboard?id=SARSOFT-PH_SARSOFT.MouseJiggler)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=SARSOFT-PH_SARSOFT.MouseJiggler&metric=code_smells)](https://sonarcloud.io/dashboard?id=SARSOFT-PH_SARSOFT.MouseJiggler)
 

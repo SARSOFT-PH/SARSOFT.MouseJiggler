@@ -1,4 +1,21 @@
-﻿namespace MouseJiggler.Net.Utils
+﻿#region copyright
+// MouseJiggler.Net - Mouse Wiggler Application
+// Copyright © 2020 LEONEL SARMIENTO
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#endregion
+namespace MouseJiggler.Net.Utils
 {
     static class Constants
     {   // DLL Imports
@@ -17,5 +34,13 @@
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_MONITOR_POWER = 0xF170;
         public const int SC_SCREENSAVE = 0xF140;
+
+        // Link
+        public const string GITHUB_URL = "https://github.com/SARSOFT-PH/SARSOFT.MouseJiggler";
+        public const string PATREON_URL = "https://patreon.com/leonelsarmiento";
+        public const string PAYPAL_URL = "http://paypal.me/leonelsarmiento";
+        public const string KOFI_URL = "https://ko-fi.com/leonelsarmiento";
+
+        public const string EXPLORER = "explorer";
     }
 }

@@ -1,5 +1,23 @@
-﻿using MouseJiggler.Net.Utils;
+﻿#region copyright
+// MouseJiggler.Net - Mouse Wiggler Application
+// Copyright © 2020 LEONEL SARMIENTO
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#endregion
+using MouseJiggler.Net.Utils;
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
@@ -32,25 +50,72 @@ namespace MouseJiggler.Net
             source.AddHook(new HwndSourceHook(WndProc));
             RegisterHotKey(helper.Handle, 1, Constants.MOD_CONTROL | Constants.MOD_SHIFT | Constants.MOD_NOREPEAT, (uint)KeyInterop.VirtualKeyFromKey(Key.F1));
 
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(15);
+            timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(15)
+            };
+
             timer.Tick += Timer_Tick;
+
+            ButtonGitHub.Click += ButtonGitHub_Click;
+            ButtonPatreon.Click += ButtonPatreon_Click;
+            ButtonPaypal.Click += ButtonPaypal_Click;
+            ButtonKofi.Click += ButtonKofi_Click;
+        }
+
+        private void ButtonKofi_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.KOFI_URL);
+        }
+
+        private void ButtonPaypal_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.PAYPAL_URL);
+        }
+
+        private void ButtonPatreon_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.PATREON_URL);
+        }
+
+        private void ButtonGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.GITHUB_URL);
+        }
+
+        public void OpenUrl(string url)
+        {
+            try
+            {
+                Process.Start(Constants.EXPLORER, url);
+            }
+            catch (Exception e)
+            {
+                EventLog.WriteEntry(Title, e.Message, EventLogEntryType.Error);
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
+        {
+            PerformCursorVibrate();
+        }
+
+        public bool PerformCursorVibrate()
         {
             int miliInterval = 10;
             for (int i = 0; i <= 50; i++)
             {
                 Thread.Sleep(miliInterval);
-                SetCursorPos((int)GetMousePosition().X + 1, (int)GetMousePosition().Y - 1);
+                SetMousePosition(GetMousePosition().X + 1, GetMousePosition().Y - 1);
                 Thread.Sleep(miliInterval);
-                SetCursorPos((int)GetMousePosition().X - 1, (int)GetMousePosition().Y + 1);
+                SetMousePosition(GetMousePosition().X - 1, GetMousePosition().Y + 1);
                 Thread.Sleep(miliInterval);
-                SetCursorPos((int)GetMousePosition().X - 1, (int)GetMousePosition().Y + 1);
+                SetMousePosition(GetMousePosition().X - 1, GetMousePosition().Y + 1);
                 Thread.Sleep(miliInterval);
-                SetCursorPos((int)GetMousePosition().X + 1, (int)GetMousePosition().Y - 1);
+                SetMousePosition(GetMousePosition().X + 1, GetMousePosition().Y - 1);
             }
+
+            return true;
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -60,11 +125,13 @@ namespace MouseJiggler.Net
                 if (timer.IsEnabled)
                 {
                     timer.Stop();
+                    ResetSystemDefault();
                     LabelGuide.Text = "PRESS (CTR + SHIFT + F1) TO ACTIVATE";
                     LabelGuide.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFBFBFBF"));
                 }
                 else
                 {
+                    FoceSystemAwake();
                     timer.Start();
                     LabelGuide.Text = "ACTIVATED!";
                     LabelGuide.FontWeight = FontWeights.Bold;
@@ -74,7 +141,12 @@ namespace MouseJiggler.Net
             return IntPtr.Zero;
         }
 
-        public static Point GetMousePosition()
+        public bool SetMousePosition(double x, double y)
+        {
+            return SetCursorPos((int) x, (int) y);
+        }
+
+        public Point GetMousePosition()
         {
             var w32Mouse = new Win32Point();
             GetCursorPos(ref w32Mouse);
@@ -88,7 +160,7 @@ namespace MouseJiggler.Net
         internal static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         [DllImport(Constants.USER32)]
-        private static extern bool SetCursorPos(int x, int y);
+        internal static extern bool SetCursorPos(int x, int y);
         
         [DllImport(Constants.USER32)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -106,7 +178,7 @@ namespace MouseJiggler.Net
 
 
         [Flags]
-        public enum ExecutionStates : uint
+        internal enum ExecutionStates : uint
         {
             ES_AWAYMODE_REQUIRED = 0x00000040,
             ES_CONTINUOUS = 0x80000000,
@@ -114,12 +186,12 @@ namespace MouseJiggler.Net
             ES_SYSTEM_REQUIRED = 0x00000001
         }
 
-        public static void FoceSystemAwake()
+        private static void FoceSystemAwake()
         {
             SetThreadExecutionState(ExecutionStates.ES_CONTINUOUS | ExecutionStates.ES_DISPLAY_REQUIRED | ExecutionStates.ES_SYSTEM_REQUIRED | ExecutionStates.ES_AWAYMODE_REQUIRED);
         }
 
-        public static void ResetSystemDefault()
+        private static void ResetSystemDefault()
         {
             SetThreadExecutionState(ExecutionStates.ES_CONTINUOUS);
         }
@@ -129,7 +201,7 @@ namespace MouseJiggler.Net
             WindowState = WindowState.Minimized;
         }
 
-        public void WindowClose_Click(object sender, RoutedEventArgs e)
+        private void WindowClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
