@@ -155,10 +155,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 <SolidColorBrush Opacity=".80" Color="#FF1A1A1D"></SolidColorBrush>
             </Border.Background>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Source="pack://application:,,,/Resources/github.png" Height="80" Margin="5" ToolTip="GitHub" Cursor="Hand"></Image>
-                <Image Source="pack://application:,,,/Resources/patreon.png" Height="80" Margin="5" ToolTip="Patreon" Cursor="Hand"></Image>
-                <Image Source="pack://application:,,,/Resources/paypal.png" Height="80" Margin="5" ToolTip="Paypal" Cursor="Hand"></Image>
-                <Image Source="pack://application:,,,/Resources/ko-fi.png" Height="80" Margin="5" ToolTip="Ko-fi" Cursor="Hand"></Image>
+                <Button x:Name="ButtonGitHub" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/Resources/github.png" Height="80" Margin="5" ToolTip="GitHub" Cursor="Hand"></Image>
+                </Button>
+                <Button x:Name="ButtonPatreon" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/Resources/patreon.png" Height="80" Margin="5" ToolTip="Patreon" Cursor="Hand"></Image>
+                </Button>
+                <Button x:Name="ButtonPaypal" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/Resources/paypal.png" Height="80" Margin="5" ToolTip="Paypal" Cursor="Hand"></Image>
+                </Button>
+                <Button x:Name="ButtonKofi" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/Resources/ko-fi.png" Height="80" Margin="5" ToolTip="Ko-fi" Cursor="Hand"></Image>
+                </Button>
             </StackPanel>
         </Border>
 

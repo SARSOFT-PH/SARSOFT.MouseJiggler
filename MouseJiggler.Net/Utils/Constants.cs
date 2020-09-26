@@ -34,5 +34,13 @@ namespace MouseJiggler.Net.Utils
         public const int WM_SYSCOMMAND = 0x0112;
         public const int SC_MONITOR_POWER = 0xF170;
         public const int SC_SCREENSAVE = 0xF140;
+
+        // Link
+        public const string GITHUB_URL = "https://github.com/SARSOFT-PH/SARSOFT.MouseJiggler";
+        public const string PATREON_URL = "https://patreon.com/leonelsarmiento";
+        public const string PAYPAL_URL = "http://paypal.me/leonelsarmiento";
+        public const string KOFI_URL = "https://ko-fi.com/leonelsarmiento";
+
+        public const string EXPLORER = "explorer";
     }
 }

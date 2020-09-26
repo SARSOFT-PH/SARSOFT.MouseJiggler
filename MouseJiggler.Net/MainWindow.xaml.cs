@@ -17,6 +17,7 @@
 #endregion
 using MouseJiggler.Net.Utils;
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
@@ -49,9 +50,49 @@ namespace MouseJiggler.Net
             source.AddHook(new HwndSourceHook(WndProc));
             RegisterHotKey(helper.Handle, 1, Constants.MOD_CONTROL | Constants.MOD_SHIFT | Constants.MOD_NOREPEAT, (uint)KeyInterop.VirtualKeyFromKey(Key.F1));
 
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(15);
+            timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(15)
+            };
+
             timer.Tick += Timer_Tick;
+
+            ButtonGitHub.Click += ButtonGitHub_Click;
+            ButtonPatreon.Click += ButtonPatreon_Click;
+            ButtonPaypal.Click += ButtonPaypal_Click;
+            ButtonKofi.Click += ButtonKofi_Click;
+        }
+
+        private void ButtonKofi_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.KOFI_URL);
+        }
+
+        private void ButtonPaypal_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.PAYPAL_URL);
+        }
+
+        private void ButtonPatreon_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.PATREON_URL);
+        }
+
+        private void ButtonGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl(Constants.GITHUB_URL);
+        }
+
+        public void OpenUrl(string url)
+        {
+            try
+            {
+                Process.Start(Constants.EXPLORER, url);
+            }
+            catch (Exception e)
+            {
+                EventLog.WriteEntry(Title, e.Message, EventLogEntryType.Error);
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
